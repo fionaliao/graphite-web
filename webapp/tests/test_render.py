@@ -78,6 +78,11 @@ class RenderTest(TestCase):
         except OSError:
             pass
 
+    def print_render(self):
+        for inputStr in ["foo.bar\n.baz\t", "absolute( baz )\n", "time(\"example blah\")"]:
+            print("inputStr:\n" + repr(inputStr))
+            print("parsed:\n", grammar.parseString(inputStr))    
+
     def test_render_extractPathExpressions(self):
         test_input = ['somefunc(my.metri[cz].{one,two})|anotherfunc()=123', 'target1,target2', '']
         expected_output = ['my.metri[cz].{one,two}', 'target1']
